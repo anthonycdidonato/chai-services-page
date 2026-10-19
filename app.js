@@ -14,68 +14,73 @@
   if (!form) return;
 
   var LABELS = {
-    intake: 'AI Intake + Procurement',
+    intake: 'AI Intake and Procurement',
     governance: 'Risk-tiered Governance',
     evaluation: 'Model Evaluation',
-    education: 'Education — other / custom curriculum',
-    insights: 'Insights (data, market intelligence, community)',
-    general: 'General inquiry'
+    'ai-governance': 'AI Governance (webinar series or executive workshop)',
+    leaders: 'Responsible AI Foundations for Leaders',
+    custom: 'Custom Curriculum',
+    insights: 'Insights (data, market intelligence, community)'
   };
   var COPY = {
     education: {
-      title: 'Request Educational Support',
-      lead: 'Thank you for your interest in CHAI Education as a Service. Tell us which teams you would like to equip and the responsible AI topics that matter most, and we will follow up to scope a program.'
+      title: 'Request Educational Services',
+      lead: "Thank you for your interest in CHAI's Education as a Service. Tell us which service area and responsible AI topics are top priority for your team and we will follow up to scope a program."
     },
     insights: {
       title: 'Request Insights',
-      lead: 'Thank you for your interest in CHAI Insights. Tell us about your organization and the data, market intelligence, or community access that would be most valuable, and we will follow up with next steps.'
+      lead: 'Thank you for your interest in CHAI Insights. Tell us which service area and responsible AI topics are top priority for your team and we will follow up with next steps.'
     }
   };
 
+  // Personal / free-mail domains are rejected; an organizational address is required.
+  var PERSONAL_DOMAINS = [
+    'gmail.com', 'googlemail.com', 'yahoo.com', 'ymail.com', 'rocketmail.com', 'hotmail.com', 'outlook.com',
+    'live.com', 'msn.com', 'aol.com', 'icloud.com', 'me.com', 'mac.com', 'protonmail.com', 'proton.me', 'pm.me',
+    'mail.com', 'email.com', 'zoho.com', 'zohomail.com', 'gmx.com', 'gmx.net', 'yandex.com', 'yandex.ru',
+    'fastmail.com', 'hey.com', 'tutanota.com', 'tuta.io', 'comcast.net', 'verizon.net', 'att.net',
+    'sbcglobal.net', 'bellsouth.net', 'cox.net', 'charter.net', 'earthlink.net', 'mailinator.com', 'guerrillamail.com'
+  ];
+  function emailProblem(email) {
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Please enter a valid email address.';
+    var domain = email.split('@')[1].toLowerCase();
+    var isPersonal = PERSONAL_DOMAINS.some(function (d) { return domain === d || domain.endsWith('.' + d); });
+    if (isPersonal) return 'Please use your organizational email address. Personal email domains (for example gmail.com or yahoo.com) are not accepted.';
+    return null;
+  }
+
   var select = document.getElementById('service');
-  var chips = document.querySelectorAll('#serviceChips button');
   var params = new URLSearchParams(location.search);
   var preset = params.get('service');
 
-  function syncChips() {
-    chips.forEach(function (b) {
-      b.classList.toggle('is-on', b.getAttribute('data-service') === select.value);
-    });
-  }
-
-  if (preset && LABELS[preset]) {
-    select.value = preset;
+  if (preset) {
     var group = preset === 'insights' ? 'insights' : 'education';
     if (COPY[group]) {
       document.getElementById('formTitle').textContent = COPY[group].title;
       document.getElementById('formLead').textContent = COPY[group].lead;
       document.title = COPY[group].title + ' | CHAI';
     }
+    if (LABELS[preset]) select.value = preset;
   }
-  syncChips();
-
-  chips.forEach(function (b) {
-    b.addEventListener('click', function () {
-      select.value = b.getAttribute('data-service');
-      syncChips();
-      clearError(select);
-    });
-  });
-  select.addEventListener('change', function () { syncChips(); clearError(select); });
 
   function fieldOf(el) { return el.closest('.field'); }
-  function setError(el) { fieldOf(el).classList.add('has-error'); }
+  function setError(el, msg) {
+    fieldOf(el).classList.add('has-error');
+    if (msg) fieldOf(el).querySelector('.field__error').textContent = msg;
+  }
   function clearError(el) { fieldOf(el).classList.remove('has-error'); }
 
-  ['name', 'company', 'email', 'message'].forEach(function (id) {
+  ['name', 'jobTitle', 'company', 'email', 'message'].forEach(function (id) {
     var el = document.getElementById(id);
     el.addEventListener('input', function () { clearError(el); });
   });
+  select.addEventListener('change', function () { clearError(select); });
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var data = {
       name: form.name.value.trim(),
+      jobTitle: form.jobTitle.value.trim(),
       company: form.company.value.trim(),
       email: form.email.value.trim(),
       service: select.value,
@@ -83,8 +88,10 @@
     };
     var ok = true;
     if (!data.name) { setError(form.name); ok = false; }
+    if (!data.jobTitle) { setError(form.jobTitle); ok = false; }
     if (!data.company) { setError(form.company); ok = false; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) { setError(form.email); ok = false; }
+    var emailMsg = emailProblem(data.email);
+    if (emailMsg) { setError(form.email, emailMsg); ok = false; }
     if (!data.service) { setError(select); ok = false; }
     if (!data.message) { setError(form.message); ok = false; }
     if (!ok) {
@@ -104,7 +111,7 @@
     // Summary
     var summary = document.getElementById('summary');
     summary.innerHTML = '';
-    [['Name', data.name], ['Company', data.company], ['Email', data.email], ['Service Area', LABELS[data.service]], ['Message', data.message]].forEach(function (pair) {
+    [['Name', data.name], ['Job Title', data.jobTitle], ['Company', data.company], ['Email', data.email], ['Service Area', LABELS[data.service]], ['Message', data.message]].forEach(function (pair) {
       var dt = document.createElement('dt'); dt.textContent = pair[0];
       var dd = document.createElement('dd'); dd.textContent = pair[1];
       summary.appendChild(dt); summary.appendChild(dd);
@@ -112,7 +119,7 @@
 
     // Optional email hand-off so the request reaches CHAI even without a backend.
     var subject = 'CHAI Services interest: ' + LABELS[data.service];
-    var body = 'Name: ' + data.name + '\nCompany: ' + data.company + '\nEmail: ' + data.email +
+    var body = 'Name: ' + data.name + '\nJob Title: ' + data.jobTitle + '\nCompany: ' + data.company + '\nEmail: ' + data.email +
       '\nService Area: ' + LABELS[data.service] + '\n\nMessage:\n' + data.message;
     document.getElementById('emailLink').href = 'mailto:admin@chai.org?subject=' +
       encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);

@@ -47,18 +47,16 @@
       <div class="container form-wrap">
 
         <div class="form-card" id="formCard">
-          <div class="service-chips" id="serviceChips" aria-label="Choose a service area">
-            <button type="button" data-service="intake">AI Intake + Procurement</button>
-            <button type="button" data-service="governance">Risk-tiered Governance</button>
-            <button type="button" data-service="evaluation">Model Evaluation</button>
-            <button type="button" data-service="insights">Insights</button>
-          </div>
-
           <form id="requestForm" novalidate>
             <div class="field">
               <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
               <input id="name" name="name" type="text" autocomplete="name" required>
               <div class="field__error">Please enter your name.</div>
+            </div>
+            <div class="field">
+              <label for="jobTitle">Job Title <span class="req" aria-hidden="true">*</span></label>
+              <input id="jobTitle" name="jobTitle" type="text" autocomplete="organization-title" required>
+              <div class="field__error">Please enter your job title.</div>
             </div>
             <div class="field">
               <label for="company">Company <span class="req" aria-hidden="true">*</span></label>
@@ -68,29 +66,29 @@
             <div class="field">
               <label for="email">Email Address <span class="req" aria-hidden="true">*</span></label>
               <input id="email" name="email" type="email" autocomplete="email" required>
-              <div class="field__error">Please enter a valid email address.</div>
+              <div class="field__error" id="emailError">Please enter a valid email address.</div>
             </div>
             <div class="field">
               <label for="service">Service Area <span class="req" aria-hidden="true">*</span></label>
               <select id="service" name="service" required>
-                <option value="">Select a service area</option>
+                <option value="" disabled selected hidden>Select a service area</option>
                 <optgroup label="Education as a Service">
-                  <option value="intake">AI Intake + Procurement</option>
+                  <option value="intake">AI Intake and Procurement</option>
                   <option value="governance">Risk-tiered Governance</option>
                   <option value="evaluation">Model Evaluation</option>
-                  <option value="education">Education — other / custom curriculum</option>
+                  <option value="ai-governance">AI Governance (webinar series or executive workshop)</option>
+                  <option value="leaders">Responsible AI Foundations for Leaders</option>
+                  <option value="custom">Custom Curriculum</option>
                 </optgroup>
                 <optgroup label="Insights">
                   <option value="insights">Insights (data, market intelligence, community)</option>
                 </optgroup>
-                <option value="general">General inquiry</option>
               </select>
               <div class="field__error">Please choose a service area.</div>
             </div>
             <div class="field">
               <label for="message">Message <span class="req" aria-hidden="true">*</span></label>
               <textarea id="message" name="message" required placeholder="Who would participate, what outcomes you are hoping for, and any timing or budget considerations."></textarea>
-              <div class="field__hint">A few sentences is plenty. We will follow up to scope the details.</div>
               <div class="field__error">Please tell us a little about what you need.</div>
             </div>
             <div class="form-foot">
