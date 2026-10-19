@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Request Services | CHAI</title>
+  <meta name="description" content="Tell CHAI about your organization and the educational or insights support you are looking for.">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="announce">
+    <a class="announce__pill" href="https://www.chai.org" target="_blank" rel="noopener"><span class="announce__tag">Update</span> Applied Model Card → Registry</a>
+  </div>
+
+  <header class="header">
+    <div class="container nav">
+      <a class="nav__logo" href="https://www.chai.org" aria-label="Coalition for Health AI home"><img src="logo.svg" alt="CHAI"></a>
+      <nav aria-label="Primary">
+        <ul class="nav__links" id="navLinks">
+          <li><a href="https://www.chai.org/about-us">About Us</a></li>
+          <li><a href="https://www.chai.org/our-work">Our Work</a></li>
+          <li><a href="https://www.chai.org/membership">Membership</a></li>
+          <li><a href="https://www.chai.org/news-events">News + Events</a></li>
+          <li><a href="https://www.chai.org/partners">Partners</a></li>
+          <li><a href="index.html" class="is-active" aria-current="page">Services<span class="is-new">New</span></a></li>
+        </ul>
+      </nav>
+      <div class="nav__right">
+        <a class="btn btn--pill" href="https://www.chai.org/member-portal">Member Portal</a>
+        <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" style="padding-bottom:24px">
+      <h1 id="formTitle">Request Services</h1>
+      <p class="hero__lead" id="formLead">Thank you for your interest in CHAI Services. Please tell us about your organization and the support you are looking for, and we will route your inquiry to the right member of the CHAI team.</p>
+    </section>
+
+    <section class="section" style="padding-top:8px">
+      <div class="container form-wrap">
+
+        <div class="form-card" id="formCard">
+          <div class="service-chips" id="serviceChips" aria-label="Choose a service area">
+            <button type="button" data-service="intake">AI Intake + Procurement</button>
+            <button type="button" data-service="governance">Risk-tiered Governance</button>
+            <button type="button" data-service="evaluation">Model Evaluation</button>
+            <button type="button" data-service="insights">Insights</button>
+          </div>
+
+          <form id="requestForm" novalidate>
+            <div class="field">
+              <label for="name">Name <span class="req" aria-hidden="true">*</span></label>
+              <input id="name" name="name" type="text" autocomplete="name" required>
+              <div class="field__error">Please enter your name.</div>
+            </div>
+            <div class="field">
+              <label for="company">Company <span class="req" aria-hidden="true">*</span></label>
+              <input id="company" name="company" type="text" autocomplete="organization" required>
+              <div class="field__error">Please enter your organization.</div>
+            </div>
+            <div class="field">
+              <label for="email">Email Address <span class="req" aria-hidden="true">*</span></label>
+              <input id="email" name="email" type="email" autocomplete="email" required>
+              <div class="field__error">Please enter a valid email address.</div>
+            </div>
+            <div class="field">
+              <label for="service">Service Area <span class="req" aria-hidden="true">*</span></label>
+              <select id="service" name="service" required>
+                <option value="">Select a service area</option>
+                <optgroup label="Education as a Service">
+                  <option value="intake">AI Intake + Procurement</option>
+                  <option value="governance">Risk-tiered Governance</option>
+                  <option value="evaluation">Model Evaluation</option>
+                  <option value="education">Education — other / custom curriculum</option>
+                </optgroup>
+                <optgroup label="Insights">
+                  <option value="insights">Insights (data, market intelligence, community)</option>
+                </optgroup>
+                <option value="general">General inquiry</option>
+              </select>
+              <div class="field__error">Please choose a service area.</div>
+            </div>
+            <div class="field">
+              <label for="message">Message <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="message" name="message" required placeholder="Who would participate, what outcomes you are hoping for, and any timing or budget considerations."></textarea>
+              <div class="field__hint">A few sentences is plenty. We will follow up to scope the details.</div>
+              <div class="field__error">Please tell us a little about what you need.</div>
+            </div>
+            <div class="form-foot">
+              <button class="btn btn--primary" type="submit">Submit</button>
+              <small>Prefer email? Write to <a href="mailto:admin@chai.org">admin@chai.org</a>.</small>
+            </div>
+          </form>
+        </div>
+
+        <div class="form-card success" id="successCard" aria-live="polite">
+          <div class="success__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+          </div>
+          <h2>Thank you — we have your request.</h2>
+          <p>A member of the CHAI team will reach out within a few business days. Here is what you shared:</p>
+          <dl class="summary" id="summary"></dl>
+          <div class="hero__actions">
+            <a class="btn btn--primary" id="emailLink" href="#">Also send as email</a>
+            <a class="btn btn--outline" href="index.html">Back to Services</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__logo"><img src="logo.svg" alt="Coalition for Health AI"></div>
+      <div>
+        <h4>Get in touch</h4>
+        <a href="mailto:admin@chai.org">admin@chai.org</a>
+      </div>
+      <div class="footer__social">
+        <a href="https://www.linkedin.com/company/coalition-for-health-ai" target="_blank" rel="noopener" aria-label="CHAI on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+      </div>
+      <div class="footer__copy">
+        <span>Copyright 2026 © Coalition for Health AI, Inc</span>
+        <span class="footer__proto">Prototype for internal review — not a live chai.org page</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
