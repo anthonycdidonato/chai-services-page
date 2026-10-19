@@ -14,12 +14,12 @@
   if (!form) return;
 
   var LABELS = {
-    intake: 'AI Intake and Procurement',
-    governance: 'Risk-tiered Governance',
+    'ai-governance': 'AI Governance',
+    risk: 'Risk Assessment',
     evaluation: 'Model Evaluation',
-    'ai-governance': 'AI Governance (webinar series or executive workshop)',
-    leaders: 'Responsible AI Foundations for Leaders',
+    intake: 'AI Intake and Procurement',
     custom: 'Custom Curriculum',
+    leaders: 'Responsible AI Foundations for Leaders',
     insights: 'Insights (data, market intelligence, community)'
   };
   var COPY = {

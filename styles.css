@@ -74,6 +74,8 @@ img { max-width: 100%; display: block; }
 .btn--pill:hover { background: #b6dfec; }
 .btn--primary { background: var(--dark-blue); color: var(--white); border-radius: 8px; padding: 12px 22px; font-size: 15px; font-weight: 600; }
 .btn--primary:hover { background: var(--medium-blue); }
+.btn--cta { background: var(--orange); color: var(--dark-blue); border-color: var(--orange); border-radius: 8px; padding: 13px 24px; font-size: 15px; font-weight: 700; box-shadow: 0 4px 14px rgba(255, 153, 51, 0.35); }
+.btn--cta:hover { background: #ff8a14; border-color: #ff8a14; transform: translateY(-1px); }
 .btn--outline { background: transparent; color: var(--dark-blue); border-color: var(--dark-blue); border-radius: 8px; padding: 11px 22px; font-size: 15px; font-weight: 600; }
 .btn--outline:hover { background: var(--light-blue-20); }
 .btn--light { background: var(--white); color: var(--dark-blue); border-radius: 8px; padding: 12px 22px; font-size: 15px; font-weight: 600; }
