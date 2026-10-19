@@ -10,6 +10,65 @@
     });
   }
 
+  // ----- Partner ecosystem rendering (landing tiles/logos + directory page) -----
+  var CATS = window.CHAI_PARTNER_CATEGORIES || [];
+  var PARTNERS = window.CHAI_PARTNERS || [];
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function countIn(cat) { return PARTNERS.filter(function (p) { return p.cats.indexOf(cat) >= 0; }).length; }
+
+  var tiles = document.getElementById('catTiles');
+  if (tiles && CATS.length) {
+    tiles.innerHTML = CATS.map(function (c) {
+      return '<a class="cat" href="partners.html#' + c.id + '"><span class="cat__count">' + countIn(c.id) + '</span><h3>' + esc(c.name) + '</h3><p>' + esc(c.sub) + '</p></a>';
+    }).join('');
+    var sp = document.getElementById('statPartners'); if (sp) sp.textContent = PARTNERS.length;
+  }
+  var logos = document.getElementById('ecoLogos');
+  if (logos && PARTNERS.length) {
+    logos.innerHTML = PARTNERS.map(function (p) {
+      return '<li><img src="' + esc(p.logo) + '" alt="' + esc(p.name) + ' logo" loading="lazy"></li>';
+    }).join('');
+  }
+
+  var dir = document.getElementById('directory');
+  if (dir && PARTNERS.length) {
+    var filters = document.getElementById('filters');
+    var countEl = document.getElementById('dirCount');
+    function card(p) {
+      var ctl = p.controls ? '<span class="pcard__ctl is-ok">' + p.controls + ' CHAI controls</span>' : '<span class="pcard__ctl">Controls forthcoming</span>';
+      var tags = p.cats.map(function (id) { var c = CATS.filter(function (x) { return x.id === id; })[0]; return '<span>' + esc(c ? c.short : id) + '</span>'; }).join('');
+      return '<article class="pcard"><div class="pcard__logo"><img src="' + esc(p.logo) + '" alt="' + esc(p.name) + ' logo" loading="lazy"></div><h3>' + esc(p.name) + '</h3><p>' + esc(p.desc) + '</p><div class="pcard__foot">' + ctl + '<div class="pcard__tags">' + tags + '</div></div></article>';
+    }
+    function render(filter) {
+      var html = '';
+      var shown = 0;
+      CATS.forEach(function (c) {
+        if (filter !== 'all' && filter !== c.id) return;
+        var list = PARTNERS.filter(function (p) { return p.cats.indexOf(c.id) >= 0; });
+        if (!list.length) return;
+        html += '<section class="dir-section" id="' + c.id + '"><h2>' + esc(c.name) + '</h2><p class="sub">' + esc(c.sub) + '</p><div class="pgrid">' + list.map(card).join('') + '</div></section>';
+        shown += list.length;
+      });
+      dir.innerHTML = html;
+      if (countEl) countEl.textContent = filter === 'all' ? 'Showing ' + PARTNERS.length + ' partners' : 'Showing ' + shown + ' partner' + (shown === 1 ? '' : 's') + ' in this category';
+      if (filters) {
+        filters.querySelectorAll('button').forEach(function (b) { b.classList.toggle('is-on', b.getAttribute('data-f') === filter); });
+      }
+    }
+    if (filters) {
+      var opts = [{ id: 'all', name: 'All Partners', n: PARTNERS.length }].concat(CATS.map(function (c) { return { id: c.id, name: c.name, n: countIn(c.id) }; }));
+      filters.innerHTML = opts.map(function (o) { return '<button type="button" data-f="' + o.id + '">' + esc(o.name) + '<span class="n">' + o.n + '</span></button>'; }).join('');
+      filters.addEventListener('click', function (e) {
+        var b = e.target.closest('button'); if (!b) return;
+        var f = b.getAttribute('data-f');
+        history.replaceState(null, '', f === 'all' ? location.pathname : '#' + f);
+        render(f);
+      });
+    }
+    var initial = location.hash.replace('#', '');
+    render(CATS.some(function (c) { return c.id === initial; }) ? initial : 'all');
+  }
+
   var form = document.getElementById('requestForm');
   if (!form) return;
 
@@ -20,7 +79,9 @@
     intake: 'AI Intake and Procurement',
     custom: 'Custom Curriculum',
     leaders: 'Responsible AI Foundations for Leaders',
-    insights: 'Insights (data, market intelligence, community)'
+    insights: 'Insights (data, market intelligence, community)',
+    'partner-find': 'Find a CHAI Partner',
+    'partner-join': 'Become a CHAI Partner'
   };
   var COPY = {
     education: {
@@ -30,6 +91,10 @@
     insights: {
       title: 'Request Insights',
       lead: 'Thank you for your interest in CHAI Insights. Tell us which service area and responsible AI topics are top priority for your team and we will follow up with next steps.'
+    },
+    partners: {
+      title: 'Partner Ecosystem Inquiry',
+      lead: 'Thank you for your interest in the CHAI Partner Ecosystem. Tell us whether you are looking for a partner or applying to become one, and we will follow up with next steps.'
     }
   };
 
@@ -54,7 +119,7 @@
   var preset = params.get('service');
 
   if (preset) {
-    var group = preset === 'insights' ? 'insights' : 'education';
+    var group = preset === 'insights' ? 'insights' : (preset.indexOf('partner') === 0 ? 'partners' : 'education');
     if (COPY[group]) {
       document.getElementById('formTitle').textContent = COPY[group].title;
       document.getElementById('formLead').textContent = COPY[group].lead;

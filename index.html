@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Services | CHAI</title>
-  <meta name="description" content="CHAI Services: Education as a Service and Insights for healthcare organizations building responsible AI programs on the CHAI framework.">
+  <title>Services + Insights | CHAI</title>
+  <meta name="description" content="CHAI Services + Insights: Education as a Service, Insights, and the CHAI Partner Ecosystem for healthcare organizations building responsible AI programs.">
   <link rel="icon" href="logo.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,8 +26,14 @@
           <li><a href="https://www.chai.org/our-work">Our Work</a></li>
           <li><a href="https://www.chai.org/membership">Membership</a></li>
           <li><a href="https://www.chai.org/news-events">News + Events</a></li>
-          <li><a href="https://www.chai.org/partners">Partners</a></li>
-          <li><a href="index.html" class="is-active" aria-current="page">Services<span class="is-new">New</span></a></li>
+          <li class="nav__item">
+            <a href="index.html" class="is-active" aria-current="page" aria-haspopup="true">Services + Insights<span class="nav__caret" aria-hidden="true">&#9662;</span></a>
+            <ul class="nav__menu" aria-label="Services + Insights">
+              <li><a href="index.html#education" class="">Education as a Service</a></li>
+              <li><a href="index.html#insights" class="">Insights</a></li>
+              <li><a href="partners.html" class="">Partner Ecosystem</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <div class="nav__right">
@@ -40,16 +46,43 @@
   <main>
     <!-- Hero -->
     <section class="hero container">
-      <h1>What We Offer</h1>
-      <p class="hero__lead">CHAI offers services to equip healthcare organizations with the knowledge, intelligence, and connections to move from AI principles to responsible practice — all of which is grounded in CHAI frameworks and the collective expertise of our community.</p>
+      <h1>Services + Insights</h1>
+      <p class="hero__lead">CHAI offers services to equip healthcare organizations with the knowledge, intelligence, and connections to move from AI principles to responsible practice — all of which is grounded in CHAI frameworks, the collective expertise of our community, and a vetted ecosystem of partners who implement it.</p>
       <div class="hero__actions">
         <a class="btn btn--primary" href="request.html?service=education">Request Educational Services</a>
         <a class="btn btn--primary" href="request.html?service=insights">Request Insights</a>
+        <a class="btn btn--outline" href="partners.html">Browse Partners</a>
+      </div>
+    </section>
+
+    <!-- Three doors -->
+    <section class="section" style="padding-top:24px">
+      <div class="container">
+        <div class="doors">
+          <a class="door door--educate" href="#education">
+            <span class="door__kicker">Learn</span>
+            <h3>Education as a Service</h3>
+            <p>Equip your teams on the foundational components of responsible AI, from governance and risk assessment to model evaluation and procurement.</p>
+            <span class="door__link">See offerings &rarr;</span>
+          </a>
+          <a class="door door--insights" href="#insights">
+            <span class="door__kicker">Know</span>
+            <h3>Insights</h3>
+            <p>Ongoing access to CHAI data, market intelligence, and community insights for leaders who want to stay at the forefront of healthcare innovation.</p>
+            <span class="door__link">See what is included &rarr;</span>
+          </a>
+          <a class="door door--partners" href="#partners">
+            <span class="door__kicker">Build</span>
+            <h3>Partner Ecosystem</h3>
+            <p>Trusted partners delivering governance platforms, testing and validation, advisory services, and data collaboration, all aligned with the CHAI framework.</p>
+            <span class="door__link">Explore partners &rarr;</span>
+          </a>
+        </div>
       </div>
     </section>
 
     <!-- Two-column offerings -->
-    <section class="section">
+    <section class="section" style="padding-top:16px">
       <div class="container">
         <div class="offer-grid">
 
@@ -116,6 +149,7 @@
               </li>
 </ul>
 
+            <p class="offer__partner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span><strong>Partner connection:</strong> Education is consultative. When a program surfaces implementation work such as platform configuration or integration, CHAI connects you with <a href="partners.html#adv">Advisory &amp; Services partners</a> aligned to the framework.</span></p>
             <div class="offer__cta">
               <a class="btn btn--primary btn--block" href="request.html?service=education">Request Educational Services
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
@@ -159,6 +193,7 @@
               </li>
             </ul>
 
+            <p class="offer__partner"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg><span><strong>Partner connection:</strong> The Data stream draws on partner self-attestations against CHAI's 40 governance controls and on activity across the <a href="partners.html">Partner Ecosystem</a>.</span></p>
             <div class="offer__cta">
               <a class="btn btn--primary btn--block" href="request.html?service=insights">Request Insights
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
@@ -170,7 +205,29 @@
       </div>
     </section>
 
-    <!-- How it works -->
+    <!-- Partner Ecosystem -->
+    <section class="section eco" id="partners">
+      <div class="container">
+        <div class="eco__head">
+          <img class="eco__badge" src="partners/chai-partner-badge.png" alt="CHAI Partner">
+          <h2>Partner Ecosystem</h2>
+          <p class="lead">Collaborate with trusted partners delivering excellence in AI governance, testing, data management, and advisory services—all aligned with the CHAI framework.</p>
+          <p class="eco__disclaimer">Partners self-attest to adherence of CHAI's recommended governance controls which are then reviewed with CHAI. It is recommended for implementers to verify these controls ahead of deployment.</p>
+          <div class="eco__actions">
+            <a class="btn btn--primary" href="partners.html">Browse all partners</a>
+            <a class="btn btn--outline" href="https://www.chai.org/our-work" target="_blank" rel="noopener">View Governance Framework</a>
+          </div>
+        </div>
+        <div class="stats" aria-label="Partner ecosystem at a glance">
+          <div class="stat"><div class="stat__num" id="statPartners">22</div><div class="stat__label">Partners</div></div>
+          <div class="stat"><div class="stat__num">4</div><div class="stat__label">Categories</div></div>
+          <div class="stat"><div class="stat__num">40</div><div class="stat__label">Controls</div></div>
+        </div>
+        <div class="cats" id="catTiles"></div>
+        <ul class="eco__logos" id="ecoLogos" aria-label="CHAI Partners"></ul>
+      </div>
+    </section>
+
     <section class="section">
       <div class="container">
         <div class="section__head">
@@ -185,7 +242,7 @@
           <div class="step">
             <div class="step__num">2</div>
             <h3>Scope the service</h3>
-            <p>Together we select the right service offerings and format (e.g., a single workshop, a multi-session webinar series, ongoing insights reports, etc.).</p>
+            <p>Together we select the right service offerings and format (e.g., a single workshop, a multi-session webinar series, ongoing insights reports, etc.), and bring in a CHAI Partner when the scope calls for implementation support.</p>
           </div>
           <div class="step">
             <div class="step__num">3</div>
@@ -201,11 +258,12 @@
       <div class="container">
         <div>
           <h2>Let's discuss your priorities.</h2>
-          <p>Whether you need a single workshop or ongoing intelligence, start with a short note and we will route it to the right member of the CHAI team.</p>
+          <p>Whether you need a single workshop, ongoing intelligence, or an implementation partner, start with a short note and we will route it to the right member of the CHAI team.</p>
         </div>
         <div class="band__actions">
           <a class="btn btn--light" href="request.html?service=education">Request Educational Services</a>
           <a class="btn btn--light" href="request.html?service=insights">Request Insights</a>
+          <a class="btn btn--light" href="request.html?service=partner-join">Become a Partner</a>
         </div>
       </div>
     </section>
@@ -230,6 +288,7 @@
     </div>
   </footer>
 
+  <script src="partners-data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Partner Ecosystem | CHAI</title>
+  <meta name="description" content="The CHAI Partner Ecosystem: governance platforms, testing and validation, advisory services, and data partners aligned with the CHAI framework.">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="announce">
+    <a class="announce__pill" href="https://www.chai.org" target="_blank" rel="noopener"><span class="announce__tag">Update</span> Applied Model Card → Registry</a>
+  </div>
+
+  <header class="header">
+    <div class="container nav">
+      <a class="nav__logo" href="https://www.chai.org" aria-label="Coalition for Health AI home"><img src="logo.svg" alt="CHAI"></a>
+      <nav aria-label="Primary">
+        <ul class="nav__links" id="navLinks">
+          <li><a href="https://www.chai.org/about-us">About Us</a></li>
+          <li><a href="https://www.chai.org/our-work">Our Work</a></li>
+          <li><a href="https://www.chai.org/membership">Membership</a></li>
+          <li><a href="https://www.chai.org/news-events">News + Events</a></li>
+          <li class="nav__item">
+            <a href="index.html" class="is-active" aria-current="page" aria-haspopup="true">Services + Insights<span class="nav__caret" aria-hidden="true">&#9662;</span></a>
+            <ul class="nav__menu" aria-label="Services + Insights">
+              <li><a href="index.html#education" class="">Education as a Service</a></li>
+              <li><a href="index.html#insights" class="">Insights</a></li>
+              <li><a href="partners.html" class="is-current">Partner Ecosystem</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <div class="nav__right">
+        <a class="btn btn--pill" href="https://www.chai.org/member-portal">Member Portal</a>
+        <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" style="padding-bottom:16px">
+      <img class="eco__badge" src="partners/chai-partner-badge.png" alt="CHAI Partner">
+      <h1>Partner Ecosystem</h1>
+      <p class="hero__lead">Collaborate with trusted partners delivering excellence in AI governance, testing, data management, and advisory services—all aligned with the CHAI framework.</p>
+      <p class="hero__note">Partners self-attest to adherence of CHAI's recommended governance controls which are then reviewed with CHAI. It is recommended for implementers to verify these controls ahead of deployment.</p>
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="https://www.chai.org/our-work" target="_blank" rel="noopener">View Governance Framework</a>
+        <a class="btn btn--outline" href="index.html">Back to Services + Insights</a>
+      </div>
+      <div class="stats" aria-label="Partner ecosystem at a glance">
+        <div class="stat"><div class="stat__num">22</div><div class="stat__label">Partners</div></div>
+        <div class="stat"><div class="stat__num">4</div><div class="stat__label">Categories</div></div>
+        <div class="stat"><div class="stat__num">40</div><div class="stat__label">Controls</div></div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:8px">
+      <div class="container">
+        <div class="filters" id="filters" aria-label="Filter partners by category"></div>
+        <p class="dir-count" id="dirCount"></p>
+        <div id="directory"></div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top:0">
+      <div class="container">
+        <div class="section__head">
+          <h2>How partners connect to CHAI services</h2>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <div class="step__num">1</div>
+            <h3>Education leads to implementation</h3>
+            <p>CHAI education programs are consultative. When a program surfaces work such as platform configuration or integration, CHAI connects you with Advisory &amp; Services partners.</p>
+          </div>
+          <div class="step">
+            <div class="step__num">2</div>
+            <h3>Partners inform Insights</h3>
+            <p>Partner self-attestations against CHAI's governance controls and activity across the ecosystem feed the Data stream of CHAI Insights.</p>
+          </div>
+          <div class="step">
+            <div class="step__num">3</div>
+            <h3>One shared framework</h3>
+            <p>Every partner, course, and briefing is grounded in the same CHAI framework, so what your teams learn maps directly to the tools they adopt.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact band -->
+    <section class="band">
+      <div class="container">
+        <div>
+          <h2>Let's discuss your priorities.</h2>
+          <p>Whether you need a single workshop, ongoing intelligence, or an implementation partner, start with a short note and we will route it to the right member of the CHAI team.</p>
+        </div>
+        <div class="band__actions">
+          <a class="btn btn--light" href="request.html?service=education">Request Educational Services</a>
+          <a class="btn btn--light" href="request.html?service=insights">Request Insights</a>
+          <a class="btn btn--light" href="request.html?service=partner-join">Become a Partner</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__logo"><img src="logo.svg" alt="Coalition for Health AI"></div>
+      <div>
+        <h4>Get in touch</h4>
+        <a href="mailto:admin@chai.org">admin@chai.org</a>
+      </div>
+      <div class="footer__social">
+        <a href="https://www.linkedin.com/company/coalition-for-health-ai" target="_blank" rel="noopener" aria-label="CHAI on LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+        </a>
+      </div>
+      <div class="footer__copy">
+        <span>Copyright 2026 © Coalition for Health AI, Inc</span>
+        <span class="footer__proto">Prototype for internal review — not a live chai.org page</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="partners-data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

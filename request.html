@@ -26,8 +26,14 @@
           <li><a href="https://www.chai.org/our-work">Our Work</a></li>
           <li><a href="https://www.chai.org/membership">Membership</a></li>
           <li><a href="https://www.chai.org/news-events">News + Events</a></li>
-          <li><a href="https://www.chai.org/partners">Partners</a></li>
-          <li><a href="index.html" class="is-active" aria-current="page">Services<span class="is-new">New</span></a></li>
+          <li class="nav__item">
+            <a href="index.html" class="is-active" aria-current="page" aria-haspopup="true">Services + Insights<span class="nav__caret" aria-hidden="true">&#9662;</span></a>
+            <ul class="nav__menu" aria-label="Services + Insights">
+              <li><a href="index.html#education" class="">Education as a Service</a></li>
+              <li><a href="index.html#insights" class="">Insights</a></li>
+              <li><a href="partners.html" class="">Partner Ecosystem</a></li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <div class="nav__right">
@@ -83,6 +89,10 @@
                 <optgroup label="Insights">
                   <option value="insights">Insights (data, market intelligence, community)</option>
                 </optgroup>
+                <optgroup label="Partner Ecosystem">
+                  <option value="partner-find">Find a CHAI Partner</option>
+                  <option value="partner-join">Become a CHAI Partner</option>
+                </optgroup>
               </select>
               <div class="field__error">Please choose a service area.</div>
             </div>
@@ -134,6 +144,7 @@
     </div>
   </footer>
 
+  <script src="partners-data.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
